@@ -1,11 +1,357 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devops Hackathon - Đề 002 - Nguyễn Văn Toàn</title>
+    <meta name="theme-color" content="#f3f4ef">
+    <meta name="description" content="Hồ sơ sinh viên Nguyễn Văn Toàn và bài thi DevOps Hackathon đề 002.">
+    <title>DevOps Hackathon - Đề 002 - Nguyễn Văn Toàn</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --ink: #202923;
+            --muted: #626b64;
+            --paper: #f3f4ef;
+            --surface: #ffffff;
+            --line: #d9ded7;
+            --green: #1e5947;
+            --green-dark: #153d32;
+            --lime: #d7ed9b;
+            --coral: #d65e48;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background-color: var(--paper);
+            background-image: linear-gradient(90deg, rgba(32, 41, 35, 0.035) 1px, transparent 1px),
+                linear-gradient(rgba(32, 41, 35, 0.035) 1px, transparent 1px);
+            background-size: 32px 32px;
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            line-height: 1.65;
+        }
+
+        a {
+            color: var(--green);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+        }
+
+        a:hover {
+            color: var(--coral);
+        }
+
+        .page-shell {
+            width: min(100% - 40px, 1000px);
+            margin: 0 auto;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            min-height: 72px;
+            border-bottom: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .brand-mark {
+            display: grid;
+            width: 34px;
+            aspect-ratio: 1;
+            place-items: center;
+            background: var(--green);
+            color: white;
+            font-family: Georgia, serif;
+            font-size: 1.05rem;
+        }
+
+        .topbar-label {
+            color: var(--green);
+            text-align: right;
+        }
+
+        .hero {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 32px;
+            align-items: end;
+            overflow: hidden;
+            margin: 34px 0 26px;
+            padding: clamp(28px, 6vw, 64px);
+            background: var(--green-dark);
+            color: white;
+        }
+
+        .hero::after {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 30%;
+            height: 8px;
+            background: var(--lime);
+            content: "";
+        }
+
+        .eyebrow {
+            margin: 0 0 12px;
+            color: var(--lime);
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        p {
+            margin-top: 0;
+        }
+
+        h1 {
+            max-width: 700px;
+            margin-bottom: 16px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 400;
+            line-height: 1.12;
+        }
+
+        .hero-copy {
+            max-width: 660px;
+            margin-bottom: 0;
+            color: #e0e8e1;
+        }
+
+        .hero-number {
+            align-self: center;
+            color: var(--lime);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(4rem, 10vw, 7rem);
+            line-height: 1;
+        }
+
+        .section {
+            margin: 26px 0;
+            padding: clamp(22px, 4vw, 36px);
+            background: var(--surface);
+            border: 1px solid var(--line);
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .section-index {
+            color: var(--coral);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.1rem;
+        }
+
+        h2 {
+            margin-bottom: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.55rem;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0 36px;
+            margin: 0;
+        }
+
+        .detail {
+            min-width: 0;
+            padding: 14px 0;
+            border-bottom: 1px solid #e9ece7;
+        }
+
+        .detail dt {
+            margin-bottom: 4px;
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .detail dd {
+            margin: 0;
+            overflow-wrap: anywhere;
+            font-weight: 600;
+        }
+
+        .project-intro {
+            max-width: 760px;
+            margin-bottom: 0;
+            color: var(--muted);
+        }
+
+        .project-intro strong {
+            color: var(--ink);
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 0 32px;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 640px) {
+            .page-shell {
+                width: min(100% - 24px, 1000px);
+            }
+
+            .topbar {
+                min-height: 62px;
+            }
+
+            .hero {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 20px;
+                margin-top: 18px;
+            }
+
+            .hero-number {
+                font-size: 3.5rem;
+            }
+
+            .details-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+    </style>
 </head>
 <body>
-    
+    <header class="topbar page-shell">
+        <a class="brand" href="#top" aria-label="Trang chủ Nguyễn Văn Toàn">
+            <span class="brand-mark" aria-hidden="true">T</span>
+            <span>Nguyễn Văn Toàn</span>
+        </a>
+        <span class="topbar-label">DEVOPS HACKATHON / ĐỀ 002</span>
+    </header>
+
+    <main id="top" class="page-shell">
+        <section class="hero" aria-labelledby="page-title">
+            <div>
+                <p class="eyebrow">Hồ sơ sinh viên · PTIT</p>
+                <h1 id="page-title">Xin chào đến với Ptit Rikkei Devops Lab - Nguyễn Văn Toàn - N24DTCN085 - CNNT1</h1>
+                <p class="hero-copy">Trang thông tin cá nhân và bài thi thực hành DevOps Hackathon đề 002.</p>
+            </div>
+            <span class="hero-number" aria-hidden="true">02</span>
+        </section>
+
+        <section class="section" aria-labelledby="student-heading">
+            <div class="section-heading">
+                <span class="section-index">01</span>
+                <h2 id="student-heading">Thông tin sinh viên</h2>
+            </div>
+            <dl class="details-grid">
+                <div class="detail">
+                    <dt>Họ và tên</dt>
+                    <dd>Nguyễn Văn Toàn</dd>
+                </div>
+                <div class="detail">
+                    <dt>Mã sinh viên</dt>
+                    <dd>N24DTCN085</dd>
+                </div>
+                <div class="detail">
+                    <dt>Lớp</dt>
+                    <dd>CNNT1</dd>
+                </div>
+                <div class="detail">
+                    <dt>Email</dt>
+                    <dd><a href="mailto:nguyenvantoan200608@gmail.com">nguyenvantoan200608@gmail.com</a></dd>
+                </div>
+                <div class="detail">
+                    <dt>Tài khoản Linux</dt>
+                    <dd>nguyenvantoan-k24cntt1</dd>
+                </div>
+                <div class="detail">
+                    <dt>GitHub username</dt>
+                    <dd><a href="https://github.com/nguyenvantoan-code" target="_blank" rel="noopener noreferrer">nguyenvantoan-code</a></dd>
+                </div>
+            </dl>
+        </section>
+
+        <section class="section" aria-labelledby="exam-heading">
+            <div class="section-heading">
+                <span class="section-index">02</span>
+                <h2 id="exam-heading">Thông tin bài thi</h2>
+            </div>
+            <dl class="details-grid">
+                <div class="detail">
+                    <dt>Đề thi</dt>
+                    <dd>002</dd>
+                </div>
+                <div class="detail">
+                    <dt>Chủ đề</dt>
+                    <dd>Quản lý sản phẩm (Shop)</dd>
+                </div>
+                <div class="detail">
+                    <dt>Cổng website</dt>
+                    <dd>8062</dd>
+                </div>
+                <div class="detail">
+                    <dt>Địa chỉ IP máy chủ</dt>
+                    <dd>103.72.57.95</dd>
+                </div>
+                <div class="detail">
+                    <dt>Ngày thi</dt>
+                    <dd>09/10/2026</dd>
+                </div>
+                <div class="detail">
+                    <dt>Repository</dt>
+                    <dd><a href="https://github.com/nguyenvantoan-code/HCM-K24-CNNT1-NguyenVanToan_De002" target="_blank" rel="noopener noreferrer">HCM-K24-CNNT1-NguyenVanToan_De002</a></dd>
+                </div>
+            </dl>
+        </section>
+
+        <section class="section" aria-labelledby="project-heading">
+            <div class="section-heading">
+                <span class="section-index">03</span>
+                <h2 id="project-heading">Giới thiệu dự án</h2>
+            </div>
+            <p class="project-intro"><strong>Quản lý sản phẩm (Shop)</strong> là website giới thiệu giao diện cửa hàng và thông tin sản phẩm. Bài thực hành triển khai trang tĩnh bằng Git, GitHub và Nginx trên máy chủ Linux, đồng thời cấu hình UFW để cho phép truy cập website từ bên ngoài.</p>
+        </section>
+    </main>
+
+    <footer class="footer page-shell">
+        <span>Nguyễn Văn Toàn · N24DTCN085 · CNNT1</span>
+        <span>DevOps Hackathon 2026 · Đề 002</span>
+    </footer>
 </body>
 </html>
